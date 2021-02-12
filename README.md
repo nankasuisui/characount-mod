@@ -1,15 +1,18 @@
-# VSCode - WordCount README
+# VSCode - characount-mod README
  
-This is a simple extension that illustrates a number of concepts when it comes to writing extensions for VS Code.  
+This is a simple extension modified VSCode-WordCount.
 
-* Activation on a file type open
-* Contributing to the status bar
-* Subscribing to update events
-* Adding a test to your extension
-* Marking up the `package.json` so the gallery looks good
 
-## Functionality
 
-It's pretty simple open up a `Markdown` file and the status bar will have an auto-updating wordcount in it...
+## 機能
+- シンプルな文字数カウント
+	- 空白文字、Markdown用の記号を(適当に)除いた文字数のカウント
 
-![Word Count in status bar](images/wordcount.gif)
+- 選択範囲の文字数カウント
+
+- 文字数制限と比較しての文字数カウント
+	- " # header(200)"
+	- " - list(200)"
+	- " 1. decimal(200)"
+	
+	の様に記入する事で、直下の要素の文字数と制限文字数をカウントして表示

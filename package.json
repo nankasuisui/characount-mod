@@ -1,9 +1,9 @@
 {
-	"name": "selectedwordcount",
-	"displayName": "Selected Word Count",
+	"name": "characount-mod",
+	"displayName": "CharacterCountModded",
 	"version": "0.1.0",
 	"publisher": "nankasuisui",
-	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of words in a Markdown document as you interact with it.",
+	"description": "Markdown Word Count modified extension",
 	"author": {
 		"name": "nankasuisui"
 	},
@@ -15,8 +15,7 @@
 		"theme": "dark"
 	},
 	"activationEvents": [
-		"onLanguage:markdown",
-		"onLanguage:plaintext"
+		"onLanguage:markdown"
 	],
 	"engines": {
 		"vscode": "0.10.x"
