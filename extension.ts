@@ -119,9 +119,13 @@ export class WordCounter {
             //header側
             let limitCount = this._getLimitCountFromHeader(cursorLineText);
 
-            let nextLineText = editor.document.lineAt(editor.selection.active.line+1).text;
+            let textCount = 0;
 
-            let textCount = this._getWordCount(nextLineText);
+            for (let _i = editor.selection.active.line+1; _i < editor.document.lineCount; _i++) {
+                let currentText = editor.document.lineAt(_i).text;
+                if (currentText == "") break;
+                textCount += this._getWordCount(currentText);
+            }
 
             return [textCount, limitCount];
 
@@ -130,14 +134,26 @@ export class WordCounter {
             if (editor.selection.active.line == 0) {
                 return [-1,-1];
             }
+            
+            let flag = false;
+            for (var _ii = editor.selection.active.line-1; _ii >= 0; _ii--) {
+                var previousLineText:string = editor.document.lineAt(_ii).text;
+                if (previousLineText == "") break;
+                if (this._searchMDHeaders(previousLineText)) {
+                    flag = true;
+                    break;
+                }
+            }
 
-            let previousLineText:string = editor.document.lineAt(editor.selection.active.line-1).text;
-
-            if (this._searchMDHeaders(previousLineText)) {
+            if (flag) {
 
                 let limitCount = this._getLimitCountFromHeader(previousLineText);
-
-                let textCount = this._getWordCount(cursorLineText);
+                let textCount = 0
+                for (let _i = _ii+1; _i < editor.document.lineCount; _i++) {
+                    let currentText = editor.document.lineAt(_i).text;
+                    if (currentText == "") break;
+                    textCount += this._getWordCount(currentText);
+                }
                 
                 return [textCount, limitCount]; 
 
