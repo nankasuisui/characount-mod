@@ -1,6 +1,6 @@
 # VSCode - characount-mod README
  
-This is a simple extension modified VSCode-WordCount.
+This is a simple extension modified from VSCode-WordCount.
 
 
 
